@@ -38,3 +38,14 @@ portfolio/
 │ └── App.jsx
 │── index.html
 │── package.json
+
+# Install dependencies
+npm install
+
+# Run development server
+npm run dev
+
+
+## ⭐ Support
+
+If you found this project helpful or interesting, consider giving it a ⭐!
