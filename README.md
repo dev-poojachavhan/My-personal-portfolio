@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # 🌐 Personal Portfolio Website
 
 A modern and responsive personal portfolio website built with React.js and Tailwind CSS, showcasing real-world projects, frontend development expertise, and a strong focus on performance, clean UI, and user experience.
@@ -49,3 +50,4 @@ npm run dev
 ## ⭐ Support
 
 If you found this project helpful or interesting, consider giving it a ⭐!
+
