@@ -1,4 +1,4 @@
-import { NavLink } from "react-router";
+import { NavLink } from "react-router-dom";
 import { IoMoonOutline } from "react-icons/io5";
 import { GiHamburgerMenu } from "react-icons/gi";
 import { useState } from "react";
@@ -36,10 +36,10 @@ export const Navbar = () => {
         <nav className="hidden  md:block">
           <ul className="flex gap-6  flex-col  md:flex-row ">
             <li>
-              <NavLink to="home">Home</NavLink>
+              <NavLink to="/">Home</NavLink>
             </li>
             <li>
-              <NavLink to="About">About</NavLink>
+              <NavLink to="about">About</NavLink>
             </li>
             <li>
               <NavLink to="skills">Skills</NavLink>
@@ -77,7 +77,7 @@ export const Navbar = () => {
           <li>
             <NavLink
               className="px-2 py-1 hover:text-sky-300 active:bg-white/20 rounded-md"
-              to="/home"
+              to="/"
             >
               Home
             </NavLink>
