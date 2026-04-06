@@ -67,3 +67,377 @@
     transform: rotateY(-8deg) rotateX(2deg);
   }
 }
+
+.glass::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.4);
+  pointer-events: none;
+}
+
+.flask-animate {
+  animation: tiltFlask 2s ease-in-out forwards;
+}
+
+@keyframes tiltFlask {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(-120deg);
+  }
+}
+
+/* {---css for dropping icons} */
+
+.icon-drop {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  color: white;
+   animation: float 4s ease-in-out infinite;
+  /* opacity: 1; */
+ 
+}
+
+.drop {
+  animation: fall 1s forwards; 
+}
+
+@keyframes fall {
+  from {
+    /* transform: translate(0, 0) rotate(0deg); */
+    opacity: 1;
+  }
+
+to {
+    transform: translate(-100px, 280px) rotate(18deg);
+    opacity: 0;
+  }
+}
+
+/* {Card visibility animation} */
+.hide {
+  opacity: 0;
+  transform: translateY(20px);
+}
+
+.show {
+  opacity: 1;
+  transform: translateY(0);
+  transition: all 0.5s ease;
+}
+
+.liquid-box {
+  overflow: hidden;
+  position: relative;
+  border-radius: 12px;
+  transform: rotate(-8deg);
+}
+
+/* Liquid */
+.liquid {
+  position: absolute;
+  top: 0;
+  width: 115%;
+  height: 180%;
+  background: radial-gradient(circle at 50% 30%, #a855f7, #6b21a8);
+
+  border-radius: 40%;
+  animation: wave 6s 1 linear;
+  animation-delay: 0.3s;
+}
+.tilt .liquid {
+  animation: wave 6s 1 linear;
+  transform: translateX(-25%) rotate(120deg);
+}
+
+@keyframes counterTilt {
+  0% {
+    transform: translateX(-25%) rotate(0deg);
+  }
+  100% {
+    transform: translateX(-25%) rotate(120deg);
+    opacity: 0;
+  }
+}
+
+/* Wave motion */
+@keyframes wave {
+  0% {
+    transform: translateX(-25%) translateY(20%) rotate(0deg);
+  }
+
+  50% {
+    transform: translateX(-40%) translateY(-10%) rotate(120deg);
+  }
+
+  100% {
+    transform: translateX(-25%) translateY(-60%);
+    transform: (0.2);
+    opacity: 0;
+  }
+}
+
+.flask-wrapper {
+  position: relative;
+  width: 380px;
+  height: 350px;
+  transform: rotate(-120deg);
+   z-index: 3;
+}
+
+.tilt {
+  animation: tiltFlask 2s ease-in-out forwards;
+}
+
+.flask-img {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  inset: 0;
+  z-index: 2;
+}
+
+.liquid-mask {
+  position: absolute;
+
+  /* tweak these 3 values carefully */
+  bottom: 36px;
+  left: 130px;
+
+  width: 125px;
+  height: 150px;
+
+  overflow: hidden;
+  /* border-radius:  60% 40% 50% 50% / 80% 80% 30% 30%; */
+  border-radius: 50% 50% 60% 40% / 70% 70% 40% 30%;
+  z-index: 1;
+  background: rgba(168, 85, 247, 0.05);
+}
+
+
+/* {liquid trail } */
+
+.liquid-trail {
+  position: absolute;
+  top: 40%;
+  right: 18%; /* adjust based on flask position */
+  width: 400px;
+  height: 120px;
+
+  background: 
+  radial-gradient(
+    circle at 75% 30%,  /* near flask */
+    rgba(168, 85, 247, 0.25),
+    transparent 50%
+  ),
+  radial-gradient(
+    circle at center bottom,
+    rgba(168, 85, 247, 0.15),
+    transparent 70%
+  ),
+  #0b1a2a;
+
+  filter: blur(25px);
+  opacity: 0.3;
+  pointer-events: none;
+}
+
+@keyframes flow {
+  0% {
+    transform: translateX(0) scaleX(0.9);
+    opacity: 0.3;
+  }
+  50% {
+    transform: translateX(-40px) scaleX(1.1);
+    opacity: 0.6;
+  }
+  100% {
+    transform: translateX(-80px) scaleX(1);
+    opacity: 0.2;
+  }
+}
+
+.liquid-trail {
+  animation: flow 4s ease-in-out infinite;
+}
+
+.skills-glow {
+  position: relative;
+}
+
+.skills-glow::before {
+  content: "";
+  position: absolute;
+  inset: -40px;
+
+  background: radial-gradient(
+    circle at center,
+    rgba(168, 85, 247, 0.15),
+    transparent 70%
+  );
+
+  filter: blur(50px);
+  z-index: -1;
+}
+
+@keyframes pulseGlow {
+  0%, 100% {
+    box-shadow: 0 0 10px rgba(168, 85, 247, 0.2);
+  }
+  50% {
+    box-shadow: 0 0 20px rgba(168, 85, 247, 0.4);
+  }
+}
+
+
+.cards-container{
+  z-index: 1;
+}
+
+.card {
+  animation: pulseGlow 3s ease-in-out infinite;
+}
+.card {
+  box-shadow: 
+    0 0 15px rgba(168, 85, 247, 0.15),
+    20px 0 30px rgba(168, 85, 247, 0.1); /* right side bias */
+}
+
+.cards-container::before {
+  content: "";
+  position: absolute;
+  top: 55%;
+  right: 25%;
+  width: 120px;
+  height: 80px;
+
+  background: radial-gradient(
+    circle,
+    rgba(168, 85, 247, 0.25),
+    transparent 70%
+  );
+
+  filter: blur(20px);
+  opacity: 0.6;
+}
+
+
+
+
+
+.flow-line {
+  position: absolute;
+  top: 42%;
+  right: 31%;
+  width: 280px;
+  height: 10px; /* 🔥 thin like a streak */
+  
+   border-radius:50% 40% 60% 50%;
+   
+
+  background: linear-gradient(
+  to left,
+  rgba(168, 85, 247, 0.9),
+  rgba(168, 85, 247, 0.6),
+  rgba(168, 85, 247, 0.2),
+  transparent
+);
+
+mask-image: linear-gradient(
+  to left,
+  black 60%,
+  rgba(0,0,0,0.6) 75%,
+  transparent 100%
+);
+  
+
+
+  filter: blur(8px);
+   
+  opacity: 0.8;
+  pointer-events: none;
+   /* animation: flowMove 3s linear infinite; */
+    animation: flowMove 2.5s ease infinite;
+            
+}
+
+
+
+
+.flow-wrapper {
+  position: absolute;
+  right: 60%;
+  /* top: 43%; */
+  bottom: 87%;
+  transform-origin: right bottom;
+} 
+
+/* different angles */
+.flow-1 { transform: rotate(80deg); }
+.flow-2 { transform: rotate(83deg); }
+.flow-3 { transform: rotate(85deg); } 
+
+.flow-1 { animation-delay: 0s; }
+.flow-2 { animation-delay: 0.3s; }
+.flow-3 { animation-delay: 0.6s; }
+
+.flow-wrapper {
+  position: absolute;
+  right: 48%;
+  top: 65%;
+  left: 54%;
+  transform-origin: right center;
+}
+
+
+
+
+
+@keyframes flowMove {
+  0% {
+      
+    transform: translateX(0) scaleX(0.9);
+    opacity: 0;
+  }
+
+  30% {
+    opacity: 0.8;
+  }
+  100% {
+    
+    transform: translateX(-80px) scaleX(1.3);
+    opacity: 0;
+  }
+}
+
+
+.animate-disc{
+  animation: discMove linear 2s 1;
+ 
+  
+}
+
+@keyframes discMove {
+
+  0% {
+     transform: translate(0px, 0px);
+   transform: rotate(180deg);
+    opacity: 1; 
+   
+  }
+
+  
+  100% {
+   
+     transform: translate(-600px, 600px) ;
+
+     opacity: 0; 
+  }
+  
+}
+
