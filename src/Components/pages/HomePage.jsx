@@ -1,9 +1,11 @@
 import React from 'react'
 import { Hero } from './Hero'
 import { About } from './About'
-import { Skills } from './skills'
+import { Skills } from './Skills'
 import { Contact } from './Contact'
-import { Projects } from './projects'
+import { Projects } from './Projects'
+
+
 
 export const HomePage = () => {
     return (
@@ -12,7 +14,7 @@ export const HomePage = () => {
             <Hero />
             <About />
             <Skills />
-            <Projects/>
+            <Projects />
             <Contact/>
       </>
   )

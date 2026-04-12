@@ -3,6 +3,8 @@ import aboutImage from "../../assets/images/about1.webp";
 
 export const About = () => {
   return (
+  
+  
     <div
       className="layout-container max-w-full min-h-screen  bg-gray-900  
                  flex justify-center flex-col gap-10 py-10"

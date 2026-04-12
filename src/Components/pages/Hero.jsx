@@ -3,6 +3,7 @@ import { NavLink } from "react-router";
 import { FaArrowRight } from "react-icons/fa6";
 import { FaGithub } from "react-icons/fa";
 import { IoMailOutline } from "react-icons/io5";
+import disc from "../../assets/images/disc.png"
 
 export const Hero = () => {
   return (
@@ -43,11 +44,11 @@ export const Hero = () => {
                       to="/contact"
                       className="group flex gap-2 items-center text-[#FEC5F6] hover:gap-3 
                               hover:text-white
-                                hover:drop-shadow-[0_0_12px_rgba(236,72,153,0.9)]
-                                transition-all duration-300"
+                                hover:drop-shadow-2xl hover:drop-shadow-cyan-400
+                                 transition-all duration-200"
                     >
                       Contact
-                      <span className="transition-transform duration-300 group-hover:translate-x-1">
+                      <span className=" group-hover:translate-x-1">
                         <FaArrowRight />
                       </span>
                     </NavLink>
@@ -81,24 +82,28 @@ export const Hero = () => {
 
           <div
             className="profile-pic justify-center items-center
-                       md:w-full md:h-full flex relative"
+                       md:w-full md:h-full flex relative "
           >
             {/* profile-Image*/}
             <div
               className=" 
               w-36 h-36  flex-col justify-center items-center
               md:w-65 md:h-80 sm:w-40 sm:h-40 border-8 border-purple-600 shadow-[0_0_30px_#38bdf8] rounded-full  flex  overflow-hidden 
-              animate-[float_5s_ease-in-out_infinite]
+              animate-[float_5s_ease-in-out_infinite]  relative
             "
             >
               <img
                 src={profileImage}
                 alt="Pooja Chavhan profile photo"
-                className=" w-full h-full object-cover absolut 
+                className=" w-full h-full object-cover absolute 
                 
                "
               />
             </div>
+
+            <img src={disc} alt=""
+            className=" animate-disc absolute  left-[600px] top-[-300px]  w-[300px] h-[350px]"
+            />
           </div>
         </div>
       </div>

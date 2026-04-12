@@ -1,36 +1,35 @@
-import React from 'react'
+import React from "react";
 
-export const Cards = ({ techDetails,pourState }) => {
-  
-  const { techName, icon,color,id} = techDetails
- 
+export const Cards = ({ techDetails, pourState, index }) => {
+  const { techName, icon, color } = techDetails;
+
+  const delay = 1.5 + index * 0.5;
+
   return (
-   <li>    
-      <div className='
-                    shadow-sm shadow-black  rounded-md w-[150px] h-[180px] bg-white/5
-                     backdrop-blur-2xl glass border border-white/30 flex flex-col items-center justify-around'
-                    
-   >
-      
-        <div className={`text-5xl text-slate-300 
-                        card ${pourState ? "show" : "hide"}`}
-                        style={{ transitionDelay: `${1.4+id * 0.5}s` }}
+    <div
+      className={`${pourState ? "displayCard" : "hideCard"} skills-glow card`}
+      style={{
+        animationDelay: `${1.5 + index * 0.3}s`,
+      }}
+    >
+      <li>
+        <div
+          className="card-inner shadow-sm shadow-slate-500
+                      rounded-md w-[90px] h-[110px]  border border-sky-800 flex flex-col items-center justify-around 
+                      md:w-[140px] md:h-[170px]"
         >
-           <span style={{ color:color }}>
-                      {icon}
-          </span>
+          {/* {inner icons of card} */}
+          <div
+            className={`text-4xl md:text-5xl text-slate-300 
+                        card ${pourState ? "show" : "hide"}`}
+            style={{ transitionDelay: `${delay + 0.3}s` }}
+          >
+            <span style={{ color: color }}>{icon}</span>
+          </div>
+
+          <p className="text-white text-lg md:text-2xl  mb-3">{techName}</p>
         </div>
-    
-    <p className="text-[#df91d5] text-2xl font-semibold mb-3">
-     {techName}
-    </p>
-
-    
-
-        
-      
-
-     
-      </div>
- </li>      )
-}
+      </li>
+    </div>
+  );
+};

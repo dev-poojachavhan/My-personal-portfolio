@@ -3,11 +3,12 @@
   import { createBrowserRouter, RouterProvider } from 'react-router-dom'
   
   import { About } from './Components/pages/About'
-  import { Skills } from './Components/pages/skills'
-  import { Projects } from './Components/pages/projects'
+  import { Skills } from './Components/pages/Skills'
+  
   import { Contact } from './Components/pages/Contact'
   import { Layout } from './Components/Layout/Layout'
   import { HomePage } from './Components/pages/HomePage'
+    import { Projects } from './Components/pages/Projects'
 
 
 
