@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { ProjectsCard } from '../UI/ProjectsCard'
 import TodoImage from "../../assets/images/TodoImage.jpg"
 import StockImage from "../../assets/images/stock1.jpg"
@@ -30,13 +30,40 @@ export const Projects = () => {
     }
   ]
 
+  useEffect(() => {
+    const grid = document.querySelector(".grid-layer");
+
+    const handleMouseMove = (e) => {
+      const { innerWidth, innerHeight } = window;
+
+      const x = (e.clientX / innerWidth - 0.5) * 8; // horizontal tilt
+      const y = (e.clientY / innerHeight - 0.5) * 8; // vertical tilt
+
+      if (grid) {
+        grid.style.transform = `
+          perspective(800px)
+          rotateX(${65 - y}deg)
+          rotateY(${x}deg)
+        `;
+      }
+    };
+
+    window.addEventListener("mousemove", handleMouseMove);
+
+    return () => window.removeEventListener("mousemove", handleMouseMove);
+  }, []);
 
   return (
-    <div className='w-full min-h-screen flex flex-col gap-10 justify-center items-center bg-[#1A3D64]'>
+    <div className='w-full min-h-screen flex flex-col gap-15  items-center 
+    projects-section    '>
 
-        <h1 className='text-3xl font-bold mb-18 text-white'>Projects</h1>
-
-      <ul className=' flex justify-center items-center gap-5'>
+        {/*grid layer */}
+  <div className="grid-layer"></div>  
+      <div className='my-10  text-center'>
+        <h1 className='md:text-4xl text-3xl font-bold  bg-white gradient-text'>Projects</h1>
+         <h3 className='text-white/80 my-6 text-sm '>Crafting ideas into interactive digital experiences</h3>
+        </div>
+      <ul className=' flex flex-col md:flex-row justify-center items-center gap-8'>
         {
           projectList.map((currPro) => {
             return <ProjectsCard key={currPro.id} projectDetails={currPro } />
