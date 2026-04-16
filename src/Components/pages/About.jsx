@@ -1,11 +1,15 @@
 import React from "react";
 import aboutImage from "../../assets/images/about1.webp";
+import { useReveal } from "../hooks/useReveal";
 
 export const About = () => {
+
+  const revealRef = useReveal();
+
   return (
   
   
-    <div
+    <div ref={revealRef}
       className="layout-container max-w-full min-h-screen  bg-gray-900  
                  flex justify-center flex-col gap-10 py-10"
     >
@@ -29,20 +33,20 @@ export const About = () => {
             ></div>
 
             {/* Image */}
-            <img
+            <img 
               src={aboutImage}
               alt="about image avatar"
               className="relative h-auto max-h-[420px] md:w-[320px] object-contain
                          drop-shadow-2xl drop-shadow-cyan-400/50
                          image-3d 
-                         hover:scale-105 transition-transform duration-300"
+                         hover:scale-105 transition-transform duration-300 reveal"
             />
           </div>
           <div
             className="about-text w-full md:w-[60%] flex flex-col justify-start 
-                     bg-gray-900/80 backdrop-blur  "
+                     bg-gray-900/80 backdrop-blur reveal  "
           >
-            <h1 className=" text-3xl font-bold gradient-text text-left ">
+            <h1 className=" text-3xl font-bold gradient-text text-left  ">
               About Me
             </h1>
 
@@ -63,7 +67,7 @@ export const About = () => {
 
       {/*---------Experience Section---------*/}
 
-      <h1 className="text-center">
+      <h1 className="text-center reveal">
         <span
           className="bg-gradient-to-r from-purple-400 via-[#a4449c] to-purple-400 
                          bg-clip-text text-transparent 
@@ -73,7 +77,7 @@ export const About = () => {
         </span>
       </h1>
 
-      <div className=" w-full flex flex-col justify-center items-center px-4  ">
+      <div className=" w-full flex flex-col justify-center items-center px-4 reveal ">
         <div
           className="max-w-4xl  bg-gray-900 w-full p-8 rounded-xl
                    border border-purple-500/20 
@@ -95,7 +99,7 @@ export const About = () => {
           <p className="mt-3 text-sm text-purple-400">Tech: React, Tailwind</p>
 
           <a
-            href="#"
+            href="https://mahavirpeb.com/" target="_blank"
             className="inline-block mt-4 text-sm text-purple-300 hover:text-white transition"
           >
             🔗 View Live Project

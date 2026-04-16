@@ -73,7 +73,7 @@ export const Skills = () => {
 
   return (
     <div
-      className="min-h-screen w-full  relative layout-container flex flex-col items-center gap-1  "
+      className="pt-20 min-h-screen w-full  relative layout-container flex flex-col items-center gap-1  "
       style={{
         background: ` 
           radial-gradient(circle at 20% 40%, rgba(168,85,247,0.15), transparent 40%),

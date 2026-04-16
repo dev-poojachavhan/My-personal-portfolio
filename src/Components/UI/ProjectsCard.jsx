@@ -6,10 +6,10 @@
     const { Title, summary, image} = projectDetails;
 
     return (
-      //bg-[#E6F4FA]
+     
       <li
-        className="card w-74 rounded-2xl h-[370px] overflow-hidden group border border-[1.5px] border-white/30 bg-transparent relative z-10 
-        shadow-black-2xl hover:shadow-xl transition-shadow duration-300  "
+        className=" w-74 rounded-2xl h-[370px] overflow-hidden group border border-[1.5px] border-white/30 bg-transparent relative z-10 
+        shadow-purple-2xl hover:shadow-xl transition-shadow duration-300  "
       >
         <div className="w-full h-[170px] overflow-hidden relative">
           <img

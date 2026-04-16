@@ -1,11 +1,13 @@
 import { NavLink } from "react-router-dom";
 import { IoMoonOutline } from "react-icons/io5";
 import { GiHamburgerMenu } from "react-icons/gi";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { IoClose } from "react-icons/io5";
 
 export const Navbar = () => {
   const [mobileMenu, setMobileMenu] = useState(false);
+
+  
 
   const ShowMenu = () => {
     setMobileMenu(!mobileMenu);
@@ -14,7 +16,8 @@ export const Navbar = () => {
 
   return (
     <>
-      <div className="nav-bar flex items-center justify-between   h-16 bg-gray-900 text-white  ">
+      <div className={`
+      layout-container flex items-center justify-between   h-16  text-white  `}>
         <div className="logo flex items-center gap-3">
           {mobileMenu ? (
             <IoClose
@@ -53,9 +56,9 @@ export const Navbar = () => {
           </ul>
         </nav>
 
-        <div>
+        {/* <div>
           <IoMoonOutline className=" md:block cursor-pointer" />
-        </div>
+        </div> */}
       </div>
 
       {/* Side Menu */}

@@ -15,7 +15,7 @@ export const Cards = ({ techDetails, pourState, index }) => {
       <li>
         <div
           className="card-inner shadow-sm shadow-slate-500
-                      rounded-md w-[90px] h-[110px]  border border-sky-800 flex flex-col items-center justify-around 
+                      rounded-md w-[90px] h-[110px]  border border-purple-800 flex flex-col items-center justify-around 
                       md:w-[140px] md:h-[170px]"
         >
           {/* {inner icons of card} */}
