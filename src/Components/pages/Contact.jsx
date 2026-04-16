@@ -1,5 +1,6 @@
 import  { useState } from "react";
 import { FaMapMarkerAlt, FaPhoneAlt, FaPaperPlane, FaGlobe } from "react-icons/fa";
+import { useReveal } from "../hooks/useReveal";
 
 export const Contact = () => {
   const [formData, setFormData] = useState({
@@ -54,74 +55,92 @@ export const Contact = () => {
     setLoading(false);
   };
 
-  return (
-    <form
-      onSubmit={handleFormSubmit}
-      className="min-h-screen flex flex-col items-center justify-center px-4 gap-14 bg-[#19243d]"
-    >
-      <h1 className="text-slate-200 font-bold text-4xl">Contact</h1>
+  const revealRef = useReveal()
 
-      <div className="max-w-5xl w-full shadow-2xl rounded-xl overflow-hidden grid md:grid-cols-2">
+
+  return (
+    <form ref={revealRef}
+      onSubmit={handleFormSubmit}
+      className="py-16 flex flex-col items-center justify-center px-4 gap-12 bg-[#19243d] border-white/3 bg-[radial-gradient(circle_at_center,_rgba(168,85,247,0.15),_transparent_60%)]"
+    >
+      <h1 className="pt-10 gradient-text font-bold text-4xl reveal">Contact</h1>
+
+      
+      <div className=" reveal
+      min-h-[500px] md:h-[500px] md:max-w-5xl w-full max-w-3xl
+      backdrop-blur-xl bg-white/3 border border-white/30  shadow-xl
+      shadow-black/10 rounded-xl overflow-hidden grid grid-cols-1 md:grid-cols-2 gap-10
+      hover:-translate-y-0.5
+      hover:shadow-[0_0_60px_rgba(168,85,247,0.2)] transition-all duration-300">
 
         {/* LEFT */}
-        <div className="bg-[#6670A4] p-10 text-white">
-          <h2 className="text-2xl font-semibold mb-6">Get in Touch</h2>
+        <div className=" p-10 text-white  ">
+          <h2 className="text-[#FEC5F6] text-2xl font-semibold mb-6">Get in Touch</h2>
 
           <div className="flex flex-col gap-6">
-            <input name="name" value={formData.name} onChange={handleChange}
+            <input 
+            name="name" value={formData.name} onChange={handleChange}
               type="text" placeholder="Name"
-              className="bg-transparent border-b border-white/40 py-2 placeholder-white/70"
+              className="input-style"
               required />
 
             <input name="email" value={formData.email} onChange={handleChange}
               type="email" placeholder="Email"
-              className="bg-transparent border-b border-white/40 py-2 placeholder-white/70"
+              className="input-style"
               required />
 
             <input name="subject" value={formData.subject} onChange={handleChange}
               type="text" placeholder="Subject"
-              className="bg-transparent border-b border-white/40 py-2 placeholder-white/70" />
+              className="input-style" />
 
             <textarea name="message" value={formData.message} onChange={handleChange}
               rows="3" placeholder="Message"
-              className="bg-transparent border-b border-white/40 py-2 placeholder-white/70 resize-none"
+              className="input-style resize-none"
               required />
 
             <button
               disabled={loading}
-              className="border shadow-xl bg-[#4b5791] hover:bg-[#303966] transition px-6 py-2 rounded-md w-fit disabled:opacity-50"
+              className="mt-6 w-full py-3 rounded-lg border border-blue-400 text-white 
+bg-blue-500/10 hover:bg-blue-500 hover:scale-[1.02] active:scale-95 
+transition-all duration-300"
             >
               {loading ? "Sending..." : "Send Message"}
             </button>
           </div>
         </div>
 
+      
+        
+
         {/* RIGHT */}
-        <div className="bg-[#ECEDF2] p-10 text-gray-700">
-          <h2 className="text-2xl font-semibold mb-2">Contact us</h2>
-          <p className="text-sm text-gray-500 mb-8">
+        <div className="  p-10 text-gray-200 md:border-l md:border-white/5" >
+          <h2 className="text-[#FEC5F6] text-2xl font-semibold mb-2">Contact us</h2>
+          <p className="text-sm text-gray-400 mb-8 ">
             We're open for any suggestion or just to have a chat
           </p>
 
           <div className="flex flex-col gap-6">
-            <div className="flex items-start gap-4">
+            <div className="flex items-start gap-4 hover:text-[#FEC5F6] hover:translate-x-1 transition-all duration-300">
               <FaMapMarkerAlt className="mt-1 text-gray-500" />
               <p>Mira Road, Maharashtra</p>
             </div>
 
-            <div className="flex items-center gap-4">
+            <div className="flex items-center gap-4 hover:text-[#FEC5F6] hover:translate-x-1 transition-all duration-300">
               <FaPhoneAlt className="text-gray-500" />
               <p>+91-9594537013</p>
             </div>
 
-            <div className="flex items-center gap-4">
+            <div className="flex items-center gap-4 hover:text-[#FEC5F6] hover:translate-x-1 transition-all duration-300">
               <FaPaperPlane className="text-gray-500" />
               <p>poojachavhan179@gmail.com</p>
             </div>
 
-            <div className="flex items-center gap-4">
+            <div className="flex items-center gap-4 hover:text-[#FEC5F6] hover:translate-x-1 transition-all duration-300">
               <FaGlobe className="text-gray-500" />
-              <p>pchavhan@devbypooja.tech</p>
+              <a href="https://devbypooja.tech/"
+                 target="_blank">
+                <p>devbypooja.tech</p>
+              </a>
             </div>
           </div>
         </div>
