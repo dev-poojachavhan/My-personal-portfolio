@@ -36,7 +36,7 @@ export const About = () => {
             <img 
               src={aboutImage}
               alt="about image avatar"
-              className="relative h-auto max-h-[420px] md:w-[320px] object-contain
+              className="relative h-auto h-[210px] w-[160px] max-h-[420px] md:w-[320px] object-contain
                          drop-shadow-2xl drop-shadow-cyan-400/50
                          image-3d 
                          hover:scale-105 transition-transform duration-300 reveal"
@@ -44,14 +44,15 @@ export const About = () => {
           </div>
           <div
             className="about-text w-full md:w-[60%] flex flex-col justify-start 
-                     bg-gray-900/80 backdrop-blur reveal  "
+                     bg-gray-900/70 backdrop-blur reveal  "
           >
-            <h1 className=" text-3xl font-bold gradient-text text-left  ">
+            <h1 className="  text-3xl md:text-4xl  text-center  font-bold gradient-text md:text-left pt-5  ">
               About Me
             </h1>
 
-            <div className="mt-6  text-gray-200">
-              <p className="leading-relaxed text-sm md:text-base">
+            <div className="mt-6  text-gray-300">
+              <p className="leading-relaxed text-sm md:text-base text-center
+                md:text-left">
                 I’m a Frontend Developer focused on building scalable,
                 performant, and user-centric web applications. My work is
                 grounded in writing clean, maintainable code and translating
@@ -71,7 +72,7 @@ export const About = () => {
         <span
           className="bg-gradient-to-r from-purple-400 via-[#a4449c] to-purple-400 
                          bg-clip-text text-transparent 
-                         text-3xl font-bold m-2 "
+                         md:text-3xl text-2xl font-bold m-2 "
         >
           Experience
         </span>
@@ -79,7 +80,7 @@ export const About = () => {
 
       <div className=" w-full flex flex-col justify-center items-center px-4 reveal ">
         <div
-          className="max-w-4xl  bg-gray-900 w-full p-8 rounded-xl
+          className="md:max-w-4xl max-w-2xl p-6  bg-gray-900 w-full md:p-8   rounded-xl
                    border border-purple-500/20 
                    shadow-lg shadow-purple-500/10
                    hover:shadow-purple-400/40 transition text-center"
