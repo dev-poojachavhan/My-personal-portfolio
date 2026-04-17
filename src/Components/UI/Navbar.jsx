@@ -7,6 +7,8 @@ import { IoClose } from "react-icons/io5";
 export const Navbar = () => {
   const [mobileMenu, setMobileMenu] = useState(false);
 
+  const activeTab = ({ isActive }) => (isActive ? "link-1" : "");
+
   
 
   const ShowMenu = () => {
@@ -37,21 +39,21 @@ export const Navbar = () => {
         </div>
 
         <nav className="hidden  md:block">
-          <ul className="flex gap-6  flex-col  md:flex-row ">
-            <li>
-              <NavLink to="/">Home</NavLink>
+          <ul className="flex gap-6  flex-col  md:flex-row relative">
+            <li className="nav-item">
+              <NavLink className={activeTab} to="/" >Home</NavLink>
             </li>
-            <li>
-              <NavLink to="about">About</NavLink>
+            <li className="nav-item" >
+              <NavLink className={activeTab} to="about">About</NavLink>
             </li>
-            <li>
-              <NavLink to="skills">Skills</NavLink>
+            <li >
+              <NavLink className={activeTab} to="skills">Skills</NavLink>
             </li>
-            <li>
-              <NavLink to="projects">Projects</NavLink>
+            <li >
+              <NavLink className={activeTab} to="projects">Projects</NavLink>
             </li>
-            <li>
-              <NavLink to="contact">Contact</NavLink>
+            <li >
+              <NavLink className={activeTab} to="contact">Contact</NavLink>
             </li>
           </ul>
         </nav>
