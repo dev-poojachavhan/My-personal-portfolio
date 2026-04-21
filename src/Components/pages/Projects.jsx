@@ -33,50 +33,92 @@ export const Projects = () => {
     }
   ]
 
-useEffect(() => {
+// useEffect(() => {
+//   const grid = document.querySelector(".grid-layer");
+
+//   let ticking = false;
+//    let windowSize = window.visualViewport
+
+//   const handleMouseMove = (e) => {
+//     if (!ticking) {
+//       window.requestAnimationFrame(() => {
+//         const { innerWidth, innerHeight } = window;
+
+//         const x = (e.clientX / innerWidth - 0.5) * 6;
+//         const y = (e.clientY / innerHeight - 0.5) * 6;
+
+//         if (grid) {
+//           grid.style.transform = `
+//             perspective(600px)
+//             rotateX(${65 - y}deg)
+//             rotateY(${x}deg)
+//           `;
+//         }
+
+//         ticking = false;
+//       });
+
+//       ticking = true;
+//     }
+//   };
+
+//   window.addEventListener("mousemove", handleMouseMove);
+//   return () => window.removeEventListener("mousemove", handleMouseMove);
+// }, []);
+
+  
+  useEffect(() => {
   const grid = document.querySelector(".grid-layer");
 
-  let ticking = false;
+  let currentX = 0;
+  let currentY = 0;
+  let targetX = 0;
+  let targetY = 0;
+
+  const lerp = (start, end, factor) => start + (end - start) * factor;
 
   const handleMouseMove = (e) => {
-    if (!ticking) {
-      window.requestAnimationFrame(() => {
-        const { innerWidth, innerHeight } = window;
+    const { innerWidth, innerHeight } = window;
 
-        const x = (e.clientX / innerWidth - 0.5) * 6;
-        const y = (e.clientY / innerHeight - 0.5) * 6;
+    targetX = (e.clientX / innerWidth - 0.5) * 4;
+    targetY = (e.clientY / innerHeight - 0.5) * 4;
+  };
 
-        if (grid) {
-          grid.style.transform = `
-            perspective(600px)
-            rotateX(${65 - y}deg)
-            rotateY(${x}deg)
-          `;
-        }
+  const animate = () => {
+    currentX = lerp(currentX, targetX, 0.1);
+    currentY = lerp(currentY, targetY, 0.1);
 
-        ticking = false;
-      });
-
-      ticking = true;
+    if (grid) {
+      grid.style.transform = `
+        perspective(600px)
+        rotateX(${65 - currentY}deg)
+        rotateY(${currentX}deg)
+      `;
     }
+
+    requestAnimationFrame(animate);
   };
 
   window.addEventListener("mousemove", handleMouseMove);
+  animate();
+
   return () => window.removeEventListener("mousemove", handleMouseMove);
 }, []);
-
+  
+  
   return (
-    <div ref={revealRef}
-      className=' pt-20 w-full min-h-screen flex flex-col gap-15  items-center 
-    projects-section    '>
+    <div ref={revealRef} id='projects'
+      className=' pt-20 pb-20 w-full min-h-screen flex flex-col  gap-5  items-center 
+      projects-section'
+      >
 
         {/*grid layer */}
-  <div className="grid-layer"></div>  
-      <div className='my-10  text-center reveal'>
-        <h1 className='md:text-4xl text-3xl font-bold  bg-white gradient-text'>Projects</h1>
-         <h3 className='text-white/80 my-6 text-sm '>Crafting ideas into interactive digital experiences</h3>
+  <div className="grid-layer "></div>  
+      <div className='my-8 flex flex-col items-center text-center reveal'>
+        <h1 className='md:text-4xl text-3xl font-bold p-2 bg-white gradient-text'>Projects</h1>
+         <h3 className='text-white/80 my-2 text-sm '>Crafting ideas into interactive digital experiences</h3>
         </div>
-      <ul className=' flex flex-col md:flex-row justify-center items-center gap-8 reveal'>
+      <ul className='p-10 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 reveal  z-20  '>
         {
           projectList.map((currPro) => {
             return <ProjectsCard key={currPro.id} projectDetails={currPro } />

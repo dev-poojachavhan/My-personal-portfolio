@@ -9,6 +9,7 @@
   import { Layout } from './Components/Layout/Layout'
   import { HomePage } from './Components/pages/HomePage'
     import { Projects } from './Components/pages/Projects'
+import { ErrorPage } from './Components/pages/ErrorPage'
 
 
 
@@ -18,11 +19,13 @@
       {
         path: "/",
         element: <Layout />,
+         errorElement: <ErrorPage/>,
         children: [
           
           {
            index: true,
-            element: <HomePage/>,
+            element: <HomePage />,
+           
           },
           {
             path: "about",

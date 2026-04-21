@@ -12,7 +12,7 @@ export const Hero = () => {
 
   
   return (
-    <div ref={revealRef}
+    <div ref={revealRef} id="home"
       className=" w-full  flex justify-center items-center min-h-screen  
                  bg-gray-900 layout-container"
     >
@@ -70,7 +70,7 @@ export const Hero = () => {
                 {/* GitHub */}
                 <a
                   href="https://github.com/dev-poojachavhan"
-                  target="_blank"
+                  target="__blank"
                   rel="noopener noreferrer"
                 >
                   <FaGithub

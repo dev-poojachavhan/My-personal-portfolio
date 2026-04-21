@@ -7,10 +7,14 @@ import { FaHtml5 } from "react-icons/fa";
 import { IoLogoCss3 } from "react-icons/io";
 import { FaGithub } from "react-icons/fa";
 import flaskImage from "../../assets/images/flaskImage.png";
+import {useReveal} from "../../Components/hooks/useReveal"
 
 export const Skills = () => {
   const [pour, setPour] = useState(false);
   const isMobile = window.innerWidth < 768;
+
+  const revealRef = useReveal();
+  
 
   const techSkills = [
     {
@@ -49,8 +53,20 @@ export const Skills = () => {
 
   // Trigger pour animation
   useEffect(() => {
-    const timer = setTimeout(() => setPour(true), 800);
-    return () => clearTimeout(timer);
+    const section = document.getElementById("skills");
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setPour(true);
+        }
+      },
+      { threshold: 0.5 },
+    );
+
+    if (section) observer.observe(section);
+
+    return () => observer.disconnect();
   }, []);
 
   // {icons precalulated values}
@@ -73,7 +89,8 @@ export const Skills = () => {
 
   return (
     <div
-      className="pt-20 min-h-screen w-full  relative layout-container flex flex-col items-center gap-1  "
+      id="skills" ref={revealRef}
+      className="pt-25 min-h-screen w-full  relative layout-container flex flex-col items-center gap-1  "
       style={{
         background: ` 
           radial-gradient(circle at 20% 40%, rgba(168,85,247,0.15), transparent 40%),
@@ -96,28 +113,33 @@ export const Skills = () => {
       ))}
 
       {/* Title */}
-      <h1 className="text-3xl  font-bold text-center mt-2 py-5 gradient-text md:text-4xl md:py-8">
+      <h1 className="reveal text-3xl  font-bold text-center mt-2 py-5 gradient-text md:text-4xl md:py-8">
         Skills
       </h1>
-      <p className="text-slate-300  text-[12px] md:text-base text-center max-w-md">
+      <p className="text-slate-300  text-[12px] md:text-base text-center max-w-md reveal">
         Technologies I use to build modern web experiences
       </p>
 
       {/* Flask + Icons */}
       <div
-        className="relative flex justify-center md:justify-end w-full 
-   h-[220px] md:h-[300px]"
+        className="relative flex justify-center md:justify-center w-full 
+   h-[220px] md:h-[300px] reveal"
       >
         {/* Flask */}
-        <div
-          className={` ${isMobile ? "flask-wrapper" : "mobile-flask-wrapper"} 
-           ${pour ? "tilt" : ""}
-           w-[200px] h-[200px] md:w-[380px] md:h-[350px]`}
-        >
+      
+          <div className={`flask-outer ${pour ? "fade" : ""}`}>
+  
+  <div
+    className={`flask-inner 
+    ${isMobile ? "flask-wrapper" : "mobile-flask-wrapper"} 
+    ${pour ? "show-flask tilt" : ""}
+    w-[200px] h-[200px] md:w-[380px] md:h-[350px]`}
+  >
+        
           <img src={flaskImage} alt="Image of flask" className="flask-img" />
 
           <div
-            className="liquid-mask w-[75px] h-[90px] bottom-[20px] right-[55px]
+            className="liquid-mask w-[70px] h-[90px] bottom-[20px] right-[55px]
            md:w-[125px] md:h-[150px] md:bottom-[36px] md:left-[130px]"
           >
             <div
@@ -129,7 +151,7 @@ export const Skills = () => {
           {/* Icons inside flask */}
 
           <div
-            className="absolute bottom-[18px] left-[50px] w-[64] h-[80] text-lg
+            className="absolute bottom-[18px] left-[44px] w-[64] h-[80] text-lg
            md:bottom-[36px] md:left-[130px] w-[120px] h-[150px] pointer-events-none text-white md:text-2xl"
           >
             <div className="relative  w-full h-full ">
@@ -137,23 +159,32 @@ export const Skills = () => {
                 const { x, y } = iconPositions[index];
 
                 return (
+                  
+
                   <div
                     key={item.id}
-                    className={`icon-drop ${pour ? "drop" : ""}`}
+                    className="icon-drop"
                     style={{
                       transform: `translate(${x}px, ${y}px) scale(${pour ? 1 : 0.7})`,
-
-                      animationDelay: `${index * 0.7}s`,
-                      animationDuration: `${2 + index}s`,
                     }}
                   >
-                    {item.icon}
+                    <div
+                      className={pour ? "drop" : ""}
+                      style={{
+                        animationDelay: `${index * 0.4}s`,
+                        animationDuration: `3s`
+                      }}
+                    >
+                      {item.icon}
+                    </div>
                   </div>
                 );
               })}
             </div>
-          </div>
-        </div>
+        </div> {/* flask-inner */}
+</div> 
+    </div>  {/* flask-outer */} 
+       
       </div>
 
       {/* Cards */}

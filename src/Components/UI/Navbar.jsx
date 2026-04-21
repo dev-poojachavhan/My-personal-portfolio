@@ -58,9 +58,7 @@ export const Navbar = () => {
           </ul>
         </nav>
 
-        {/* <div>
-          <IoMoonOutline className=" md:block cursor-pointer" />
-        </div> */}
+       
       </div>
 
       {/* Side Menu */}
@@ -74,19 +72,20 @@ export const Navbar = () => {
           <li>
             <NavLink
               className="px-2 py-1 hover:text-sky-300 active:bg-white/20 rounded-md"
-              to="/about"
-            >
-              About
-            </NavLink>
-          </li>
-          <li>
-            <NavLink
-              className="px-2 py-1 hover:text-sky-300 active:bg-white/20 rounded-md"
               to="/"
             >
               Home
             </NavLink>
           </li>
+          <li>
+            <NavLink
+              className="px-2 py-1 hover:text-sky-300 active:bg-white/20 rounded-md"
+              to="/about"
+            >
+              About
+            </NavLink>
+          </li>
+          
           <li>
             <NavLink
               className="px-2 py-1 hover:text-sky-300 active:bg-white/20 rounded-md"

@@ -9,7 +9,7 @@ export const About = () => {
   return (
   
   
-    <div ref={revealRef}
+    <div ref={revealRef} id="about"
       className="layout-container max-w-full min-h-screen  bg-gray-900  
                  flex justify-center flex-col gap-10 py-10"
     >
